@@ -1,4 +1,5 @@
 const MedicineService = require('../services/medicineService');
+const shopService = require('../services/shopService');
 
 exports.addMedicine = async (req, res, next) => {
   try {
@@ -35,5 +36,13 @@ exports.getByCategory = async (req, res, next) => {
     const limit = req.query.limit ? parseInt(req.query.limit) : 12;
     const data = await MedicineService.getByCategory(req.params.category, page, limit);
     res.json(data);
+  } catch (err) { next(err); }
+};
+
+exports.getLocalAvailability = async (req, res, next) => {
+  try {
+    const { lat, lng } = req.query;
+    const result = await shopService.checkLocalAvailability(req.params.id, lat, lng);
+    res.json(result);
   } catch (err) { next(err); }
 };

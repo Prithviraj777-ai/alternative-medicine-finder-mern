@@ -76,7 +76,7 @@ const SearchBar = () => {
         <input
           type="text"
           className="w-full p-4 pl-12 pr-12 rounded-2xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-xl focus:border-blue-500 outline-none transition-all text-lg text-gray-800 dark:text-gray-100"
-          placeholder="Search medicines (e.g. Paracetamol)..."
+          placeholder="Search medicines (e.g. Ashwagandha)..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />

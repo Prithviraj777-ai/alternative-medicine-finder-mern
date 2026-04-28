@@ -7,5 +7,6 @@ router.get('/search', medicineController.searchMedicines);
 router.get('/category/:category', medicineController.getByCategory);
 router.get('/:id', medicineController.getMedicineById);
 router.get('/:id/alternatives', medicineController.getAlternatives);
+router.get('/:id/local-availability', medicineController.getLocalAvailability);
 
 module.exports = router;
