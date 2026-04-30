@@ -1,16 +1,19 @@
 import axios from 'axios';
 
+console.log("API BASE URL:", import.meta.env.VITE_API_URL);
+
 const API = axios.create({
-  baseURL: (import.meta.env.VITE_API_URL || '') + '/api',
+  baseURL: import.meta.env.VITE_API_URL + '/api',
 });
-// Configure Axios with JWT authorization header interceptor
+
+// Add token automatically
 API.interceptors.request.use((req) => {
-  const adminToken = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  // Check token
-  if (adminToken) {
-    req.headers.Authorization = `Bearer ${adminToken}`;
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
   }
+
   return req;
 });
 
