@@ -32,7 +32,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/payment', paymentRoutes);
 
 // Health Check
-app.get('/health', (req, res) => res.send('API is running...'));
+app.get(['/health', '/api/health'], (req, res) => res.status(200).json({ status: 'ok', message: 'API is running...' }));
 
 // Error Handling
 app.use(errorHandler);
